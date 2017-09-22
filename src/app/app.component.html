@@ -7,7 +7,7 @@
   <div fxFlex style="background-color:green;">
 
     <div fxLayout="row wrap" class="colored box nopad" >
-      <div fxFlex="30%">
+      <div fxFlex="40%">
         <div class="event-container mat-elevation-z8">
           <md-table #table [dataSource]="dataSource">
 
@@ -15,27 +15,27 @@
                   The actual rendered columns are set as a property on the row definition" -->
 
             <!-- Position Column -->
-            <ng-container mdColumnDef="position">
-              <md-header-cell *mdHeaderCellDef> No. </md-header-cell>
-              <md-cell *mdCellDef="let element"> {{element.position}} </md-cell>
+            <ng-container mdColumnDef="date">
+              <md-header-cell *mdHeaderCellDef> Date </md-header-cell>
+              <md-cell *mdCellDef="let event"> {{event.timestamp | date:'yyyy MMM dd'}} </md-cell>
             </ng-container>
 
             <!-- Name Column -->
-            <ng-container mdColumnDef="name">
-              <md-header-cell *mdHeaderCellDef> Name </md-header-cell>
-              <md-cell *mdCellDef="let element"> {{element.name}} </md-cell>
+            <ng-container mdColumnDef="time">
+              <md-header-cell *mdHeaderCellDef> Time </md-header-cell>
+              <md-cell *mdCellDef="let event"> {{event.timestamp | date:'h:mm:ss a' | lowercase}} </md-cell>
             </ng-container>
 
             <!-- Weight Column -->
-            <ng-container mdColumnDef="weight">
-              <md-header-cell *mdHeaderCellDef> Weight </md-header-cell>
-              <md-cell *mdCellDef="let element"> {{element.weight}} </md-cell>
+            <ng-container mdColumnDef="event">
+              <md-header-cell *mdHeaderCellDef> Event </md-header-cell>
+              <md-cell *mdCellDef="let event"> {{event.type}} </md-cell>
             </ng-container>
 
             <!-- Color Column -->
-            <ng-container mdColumnDef="symbol">
-              <md-header-cell *mdHeaderCellDef> Symbol </md-header-cell>
-              <md-cell *mdCellDef="let element"> {{element.symbol}} </md-cell>
+            <ng-container mdColumnDef="context">
+              <md-header-cell *mdHeaderCellDef> Context </md-header-cell>
+              <md-cell *mdCellDef="let event"> {{event.context}} </md-cell>
             </ng-container>
 
             <md-header-row *mdHeaderRowDef="displayedColumns"></md-header-row>
@@ -43,7 +43,7 @@
           </md-table>
         </div>
       </div>
-      <div fxFlex="70%">  2 </div>
+      <div fxFlex="60%">  2 </div>
     </div>
 
   </div>

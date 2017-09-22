@@ -1,6 +1,8 @@
 export interface SentryEvent {
-  position: number;
-  name: string;
-  weight: number;
-  symbol: string;
+  timestamp: string;
+  type: string;
+  context: string;
 }
+
+
+

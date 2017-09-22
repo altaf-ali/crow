@@ -4,20 +4,20 @@ import { SentryService} from './sentry-service';
 
 @Component({
   selector: 'app-root',
-  providers: [SentryService],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 
 export class AppComponent implements OnInit {
   title = 'Sentry Events';
-  dataSource: SentryService | null;
+  //dataSource: SentryService | null;
 
-  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns = ['date', 'time', 'event', 'context'];
 
   ngOnInit(): void {
-    this.dataSource = new SentryService();
+    //this.dataSource = SentryService;
   }
 
+  constructor(private dataSource: SentryService) {}
 }
 
