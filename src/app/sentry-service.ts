@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { DataSource } from '@angular/cdk/collections';
 import { Observable } from 'rxjs/Observable';
-import { Http, Headers, Response, Jsonp, URLSearchParams } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import { SentryEvent } from './sentry-event';
 
 import 'rxjs/add/operator/map';
@@ -9,26 +9,20 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/observable/empty';
-import {NULL_EXPR} from "@angular/compiler/src/output/output_ast";
 
 @Injectable()
 export class SentryService extends DataSource<any> {
-  baseUrl = 'https://sentry.io/api/0/projects/uclspp/publg100/events/';
-  Result = 'SUCCESS';
-
-  constructor(private http: Http, private jsonp: Jsonp) {
+  constructor(private http: Http) {
     super();
   }
 
   connect(): Observable<SentryEvent[]> {
-    let url = 'https://sentry.io/api/0/projects/uclspp/publg100/events/';
+    const url = 'https://sentry.io/api/0/projects/uclspp/publg100/events/';
+    const proxy = 'https://crow-proxy.herokuapp.com';
 
-    let headers = new Headers();
-
+    const headers = new Headers();
     headers.append('Target-URL', url);
-    headers.append('Authorization', 'Bearer c4b91029f8da4cf9a30e53d36f911c1fb651042ab60a4491a2f28d0c4cab9a15');
-
-    let proxy = 'https://crow-proxy.herokuapp.com';
+    headers.append('Authorization', 'Bearer 40fd6d9e89f94bbc8642b58cd39585c251681a89304f410aaf74e5bd974b8b5e');
 
     return this.http.get(proxy,{ headers: headers} )
       .map(response => response.json().map(data => {

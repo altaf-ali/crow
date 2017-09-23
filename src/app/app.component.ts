@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { SentryService} from './sentry-service';
 
@@ -8,16 +8,12 @@ import { SentryService} from './sentry-service';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'Sentry Events';
-  //dataSource: SentryService | null;
 
   displayedColumns = ['date', 'time', 'event', 'context'];
 
-  ngOnInit(): void {
-    //this.dataSource = SentryService;
-  }
-
-  constructor(private dataSource: SentryService) {}
+  constructor(public dataSource: SentryService) {}
 }
+
 

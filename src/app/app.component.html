@@ -4,47 +4,69 @@
     <span>{{title}}</span>
   </md-toolbar>
 
-  <div fxFlex style="background-color:green;">
+  <div fxLayout="row">
+    <div fxFlex="35%" class="scrollx">
 
-    <div fxLayout="row wrap" class="colored box nopad" >
-      <div fxFlex="40%">
-        <div class="event-container mat-elevation-z8">
-          <md-table #table [dataSource]="dataSource">
+      <md-table #table [dataSource]="dataSource">
 
-            <!--- Note that these columns can be defined in any order.
-                  The actual rendered columns are set as a property on the row definition" -->
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
 
-            <!-- Position Column -->
-            <ng-container mdColumnDef="date">
-              <md-header-cell *mdHeaderCellDef> Date </md-header-cell>
-              <md-cell *mdCellDef="let event"> {{event.timestamp | date:'yyyy MMM dd'}} </md-cell>
-            </ng-container>
+        <!-- Position Column -->
+        <ng-container mdColumnDef="date">
+          <md-header-cell *mdHeaderCellDef> Date </md-header-cell>
+          <md-cell *mdCellDef="let event"> {{event.timestamp | date:'yyyy MMM dd'}} </md-cell>
+        </ng-container>
 
-            <!-- Name Column -->
-            <ng-container mdColumnDef="time">
-              <md-header-cell *mdHeaderCellDef> Time </md-header-cell>
-              <md-cell *mdCellDef="let event"> {{event.timestamp | date:'h:mm:ss a' | lowercase}} </md-cell>
-            </ng-container>
+        <!-- Name Column -->
+        <ng-container mdColumnDef="time">
+          <md-header-cell *mdHeaderCellDef> Time </md-header-cell>
+          <md-cell *mdCellDef="let event"> {{event.timestamp | date:'h:mm:ss a' | lowercase}} </md-cell>
+        </ng-container>
 
-            <!-- Weight Column -->
-            <ng-container mdColumnDef="event">
-              <md-header-cell *mdHeaderCellDef> Event </md-header-cell>
-              <md-cell *mdCellDef="let event"> {{event.type}} </md-cell>
-            </ng-container>
+        <!-- Weight Column -->
+        <ng-container mdColumnDef="event">
+          <md-header-cell *mdHeaderCellDef> Event </md-header-cell>
+          <md-cell *mdCellDef="let event"> {{event.type}} </md-cell>
+        </ng-container>
 
-            <!-- Color Column -->
-            <ng-container mdColumnDef="context">
-              <md-header-cell *mdHeaderCellDef> Context </md-header-cell>
-              <md-cell *mdCellDef="let event"> {{event.context}} </md-cell>
-            </ng-container>
+        <!-- Color Column -->
+        <ng-container mdColumnDef="context">
+          <md-header-cell *mdHeaderCellDef> Context </md-header-cell>
+          <md-cell *mdCellDef="let event"> {{event.context}} </md-cell>
+        </ng-container>
 
-            <md-header-row *mdHeaderRowDef="displayedColumns"></md-header-row>
-            <md-row *mdRowDef="let row; columns: displayedColumns;"></md-row>
-          </md-table>
+        <md-header-row *mdHeaderRowDef="displayedColumns"></md-header-row>
+        <md-row *mdRowDef="let row; columns: displayedColumns;"></md-row>
+      </md-table>
+    </div>
+
+    <div fxFlex="65%">
+
+      <div fxLayout="row">
+
+        <div fxFlex="50%">
+          <md-card>
+            <button md-button>All</button>
+            <button md-raised-button>Of</button>
+            <button md-raised-button color="primary">The</button>
+            <button md-raised-button color="accent">Buttons</button>
+          </md-card>
         </div>
+
+        <div fxFlex="50%">
+          <md-card>
+            <button md-button>All</button>
+            <button md-raised-button>Of</button>
+            <button md-raised-button color="primary">The</button>
+            <button md-raised-button color="accent">Buttons</button>
+          </md-card>
+        </div>
+
       </div>
-      <div fxFlex="60%">  2 </div>
+
     </div>
 
   </div>
+
 </div>
