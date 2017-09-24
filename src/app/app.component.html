@@ -24,46 +24,28 @@
           <md-cell *mdCellDef="let event"> {{event.timestamp | date:'h:mm:ss a' | lowercase}} </md-cell>
         </ng-container>
 
-        <!-- Weight Column -->
-        <ng-container mdColumnDef="event">
-          <md-header-cell *mdHeaderCellDef> Event </md-header-cell>
-          <md-cell *mdCellDef="let event"> {{event.type}} </md-cell>
+        <!-- Color Column -->
+        <ng-container mdColumnDef="name">
+          <md-header-cell *mdHeaderCellDef> Name </md-header-cell>
+          <md-cell *mdCellDef="let event"> {{event.user_name}} </md-cell>
         </ng-container>
 
         <!-- Color Column -->
-        <ng-container mdColumnDef="context">
-          <md-header-cell *mdHeaderCellDef> Context </md-header-cell>
-          <md-cell *mdCellDef="let event"> {{event.context}} </md-cell>
+        <ng-container mdColumnDef="email">
+          <md-header-cell *mdHeaderCellDef> Email </md-header-cell>
+          <md-cell *mdCellDef="let event"> {{event.user_email}} </md-cell>
         </ng-container>
 
         <md-header-row *mdHeaderRowDef="displayedColumns"></md-header-row>
-        <md-row *mdRowDef="let row; columns: displayedColumns;"></md-row>
+        <md-row *mdRowDef="let row; columns: displayedColumns;"
+                [ngClass]="{'selected': selectedEvent == row.id}"
+                (click)="onEventSelect(row)"></md-row>
       </md-table>
     </div>
 
     <div fxFlex="65%">
 
-      <div fxLayout="row">
-
-        <div fxFlex="50%">
-          <md-card>
-            <button md-button>All</button>
-            <button md-raised-button>Of</button>
-            <button md-raised-button color="primary">The</button>
-            <button md-raised-button color="accent">Buttons</button>
-          </md-card>
-        </div>
-
-        <div fxFlex="50%">
-          <md-card>
-            <button md-button>All</button>
-            <button md-raised-button>Of</button>
-            <button md-raised-button color="primary">The</button>
-            <button md-raised-button color="accent">Buttons</button>
-          </md-card>
-        </div>
-
-      </div>
+      <router-outlet></router-outlet>
 
     </div>
 

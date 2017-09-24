@@ -11,3 +11,11 @@ html, body {
 .scrollx {
   overflow: auto;
 }
+
+md-row.selected {
+  background: #E8EAF6;
+}
+
+md-header-cell.mat-header-cell {
+  color: black;
+}
