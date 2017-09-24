@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
+import { Router } from '@angular/router';
 
-import { SentryService} from './sentry-service';
+import 'rxjs/add/operator/switchMap';
+
+import { SentryService} from './sentry.service';
 
 @Component({
   selector: 'app-root',
@@ -8,16 +11,27 @@ import { SentryService} from './sentry-service';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent {
+  selectedEvent: number = -1;
+
   title = 'Sentry Events';
-  //dataSource: SentryService | null;
 
-  displayedColumns = ['date', 'time', 'event', 'context'];
+  displayedColumns = ['date', 'time', 'name', 'email'];
 
-  ngOnInit(): void {
-    //this.dataSource = SentryService;
+  constructor(
+    private router: Router,
+    public dataSource: SentryService
+  ) { }
+
+  gotoEvent(id): void {
+    this.router.navigate(['/events', id]);
   }
 
-  constructor(private dataSource: SentryService) {}
+  onEventSelect(row): void {
+    this.selectedEvent = row.id;
+    this.gotoEvent(row.id);
+  }
+
 }
+
 

@@ -7,3 +7,15 @@ html, body {
   height: 100%;
   margin: 0;
 }
+
+.scrollx {
+  overflow: auto;
+}
+
+md-row.selected {
+  background: #E8EAF6;
+}
+
+md-header-cell.mat-header-cell {
+  color: black;
+}
